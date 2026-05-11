@@ -1,0 +1,33 @@
+#Realizo la clase abstracta Servicio (ABC) (Andrés Felipe Restrepo Moreno)
+class Servicio(ABC):
+    def __init__(self, nombre, costo_base):
+        self.nombre = nombre
+        self.costo_base = costo_base
+    @abstractmethod
+    def calcular_costo(self):
+        pass
+    @abstractmethod
+    def descripcion(self):
+        pass
+
+#Realizo la Reserva de Sala para la Herencia (Andrés Felipe Restrepo Moreno)
+class ReservaSala(Servicio):
+    def calcular_costo(self, horas=1):
+        return self.costo_base * horas
+    def description(self):
+        return "Servicio de reserva de sala"
+    
+#Realizo la clase de alquiler de equipos para el polimorfismo de la herencia (Andrés Felipe Restrepo Moreno)
+class AlquilerEquipos(Servicio):
+    def calcular_costo(self, dias=1):
+        return self.costo_base * dias
+    def descripcion (self):
+        return "Servicio de alquiler de equipos"
+
+#Realizo la clase de asesoría especializada para los servicios especializados (Andrés Felipe Restrepo Moreno)
+class AsesoriaEspecializada(Servicio):
+    def calcular_costo(self, sesiones=1):
+        return self.costo_base * sesiones
+    def descripcion(self):
+        return "Servicio de asesoría especializada"
+    
