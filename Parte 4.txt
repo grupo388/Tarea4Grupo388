@@ -1,0 +1,67 @@
+# =========================================================
+# PARTE 4 - ANDRÉS
+# =========================================================
+# En esta parte se desarrolló:
+# - Simulación de operaciones
+# - Manejo de errores
+# - try/except/else/finally
+# - Validaciones del sistema
+# =========================================================
+
+clientes = []
+reservas = []
+
+try:
+
+    # CLIENTE VÁLIDO
+    cliente1 = Cliente(
+        "Juan Pérez",
+        "juan@gmail.com",
+        "3001234567"
+    )
+
+    clientes.append(cliente1)
+
+    # CLIENTE INVÁLIDO
+    cliente2 = Cliente(
+        "",
+        "correo_malo",
+        "abc"
+    )
+
+    clientes.append(cliente2)
+
+except ValidacionError as e:
+
+    logging.error(e)
+    print(f"Error de validación: {e}")
+
+else:
+
+    print("Clientes registrados correctamente")
+
+finally:
+
+    print("Proceso de clientes finalizado")
+
+
+try:
+
+    servicio1 = ReservaSala("Sala VIP", 50000)
+
+    reserva1 = Reserva(cliente1, servicio1, 3)
+
+    reserva1.confirmar()
+
+    reservas.append(reserva1)
+
+    reserva1.mostrar_reserva()
+
+except Exception as e:
+
+    logging.error(e)
+    print(f"Ocurrió un error: {e}")
+
+finally:
+
+    print("Sistema ejecutado correctamente")
