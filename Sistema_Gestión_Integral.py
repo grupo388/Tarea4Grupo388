@@ -53,6 +53,10 @@ class Entidad(ABC):
             print(f"Correo: {self.__correo}")
             print(f"Telefono: {self.__telefono}")
 
+<<<<<<< HEAD
+=======
+#Realizo la clase abstracta Servicio (ABC) (Andrés Felipe Restrepo Moreno)
+>>>>>>> fb0581a (Realizo servicios y polimorfismo - Andrés Felipe Restrepo Moreno)
 class Servicio(ABC):
     def __init__(self, nombre, costo_base):
         self.nombre = nombre
@@ -84,6 +88,7 @@ class AsesoriaEspecializada(Servicio):
         return self.costo_base * sesiones
     def descripcion(self):
         return "Servicio de asesoría especializada"
+<<<<<<< HEAD
 
 #Realizo la clase de reserva de salapara el polimorfismo de la herencia.
 class Reserva:
@@ -117,3 +122,6 @@ class Reserva:
         self.cliente.mostrar_info()
         print(f"Servicio: {self.servicio.descripción()}")
         print(f"Estado: {self.estado}")
+=======
+    
+>>>>>>> fb0581a (Realizo servicios y polimorfismo - Andrés Felipe Restrepo Moreno)
