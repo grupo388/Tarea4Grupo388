@@ -27,32 +27,32 @@ class Cliente(Entidad):
             raise ValidacionError("El nombre no puede estar vacío.")
         if "@" not in correo:
             raise ValidacionError("Correo electrónico no válido.")
-            if not telefono.isdigit():
-                raise ValidacionError("El telefono debe contener solo números")
-            self.__nombre = nombre
-            self.__correo = correo
-            self.__telefono = telefono
+        if not telefono.isdigit():
+            raise ValidacionError("El telefono debe contener solo números")
+        self.__nombre = nombre
+        self.__correo = correo
+        self.__telefono = telefono
 
-        #Realizo el método getter para la encapsulación de los atributos
-        def get_nombre(self):
-            return self.__nombre
-        def get_correo(correo):
-            return self.__correo
-        def get_telefono(telefono):
-            return self.__telefono
+    #Realizo el método getter para la encapsulación de los atributos
+    def get_nombre(self):
+        return self.__nombre
+    def get_correo(self):
+        return self.__correo
+    def get_telefono(self):
+        return self.__telefono
         
-        #Realizo el método setters para las validaciones de los atributos
-        def set_nombre(self, nombre):
-            self.__nombre = nombre
-        def set_correo(self, correo):
-            self.__correo = correo
-        def set_telefono(self, telefono):
-            self.__telefono = telefono
-        #Realizo el método mostrar_info para mostrar la información del cliente.
-        def mostrar_info(self):
-            print(f"Cliente: {self.__nombre}")
-            print(f"Correo: {self.__correo}")
-            print(f"Telefono: {self.__telefono}")
+    #Realizo el método setters para las validaciones de los atributos
+    def set_nombre(self, nombre):
+        self.__nombre = nombre
+    def set_correo(self, correo):
+        self.__correo = correo
+    def set_telefono(self, telefono):
+        self.__telefono = telefono
+    #Realizo el método mostrar_info para mostrar la información del cliente.
+    def mostrar_info(self):
+        print(f"Cliente: {self.__nombre}")
+        print(f"Correo: {self.__correo}")
+        print(f"Telefono: {self.__telefono}")
 
 #Realizo la clase abstracta Servicio (ABC) (Andrés Felipe Restrepo Moreno)
 class Servicio(ABC):
@@ -70,7 +70,7 @@ class Servicio(ABC):
 class ReservaSala(Servicio):
     def calcular_costo(self, horas=1):
         return self.costo_base * horas
-    def description(self):
+    def descripcion(self):
         return "Servicio de reserva de sala"
     
 #Realizo la clase de alquiler de equipos para el polimorfismo de la herencia (Andrés Felipe Restrepo Moreno)
@@ -118,7 +118,7 @@ class Reserva:
     def mostrar_reserva(self):
         print("\n==== RESERVA ====")
         self.cliente.mostrar_info()
-        print(f"Servicio: {self.servicio.descripción()}")
+        print(f"Servicio: {self.servicio.descripcion()}")
         print(f"Estado: {self.estado}")
 
 clientes = []
