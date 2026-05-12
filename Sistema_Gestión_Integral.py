@@ -15,17 +15,18 @@ class ValidacionError(Exception):
 
 #Realizo la clase abstracta Entidad
 class Entidad(ABC):
+
     @abstractmethod
     def mostrar_info(self):
         pass
 
-    #Realizo la clase cliente que hereda de la clase Entidad
-    class Cliente(Entidad):
-        def __init__(self, nombre, correo, telefono):
-            if not nombre.strip():
-                raise ValidacionError("El nombre no puede estar vacío.")
-            if "@" not in correo:
-                raise ValidacionError("Correo electrónico no válido.")
+#Realizo la clase cliente que hereda de la clase Entidad
+class Cliente(Entidad):
+    def __init__(self, nombre, correo, telefono):
+        if not nombre.strip():
+            raise ValidacionError("El nombre no puede estar vacío.")
+        if "@" not in correo:
+            raise ValidacionError("Correo electrónico no válido.")
             if not telefono.isdigit():
                 raise ValidacionError("El telefono debe contener solo números")
             self.__nombre = nombre
@@ -53,10 +54,7 @@ class Entidad(ABC):
             print(f"Correo: {self.__correo}")
             print(f"Telefono: {self.__telefono}")
 
-<<<<<<< HEAD
-=======
 #Realizo la clase abstracta Servicio (ABC) (Andrés Felipe Restrepo Moreno)
->>>>>>> fb0581a (Realizo servicios y polimorfismo - Andrés Felipe Restrepo Moreno)
 class Servicio(ABC):
     def __init__(self, nombre, costo_base):
         self.nombre = nombre
@@ -88,7 +86,7 @@ class AsesoriaEspecializada(Servicio):
         return self.costo_base * sesiones
     def descripcion(self):
         return "Servicio de asesoría especializada"
-<<<<<<< HEAD
+
 
 #Realizo la clase de reserva de salapara el polimorfismo de la herencia.
 class Reserva:
@@ -122,6 +120,61 @@ class Reserva:
         self.cliente.mostrar_info()
         print(f"Servicio: {self.servicio.descripción()}")
         print(f"Estado: {self.estado}")
-=======
-    
->>>>>>> fb0581a (Realizo servicios y polimorfismo - Andrés Felipe Restrepo Moreno)
+
+clientes = []
+reservas = []
+
+try:
+
+    # CLIENTE VÁLIDO
+    cliente1 = Cliente(
+        "Juan Pérez",
+        "juan@gmail.com",
+        "3001234567"
+    )
+
+    clientes.append(cliente1)
+
+    # CLIENTE INVÁLIDO
+    cliente2 = Cliente(
+        "",
+        "correo_malo",
+        "abc"
+    )
+
+    clientes.append(cliente2)
+
+except ValidacionError as e:
+
+    logging.error(e)
+    print(f"Error de validación: {e}")
+
+else:
+
+    print("Clientes registrados correctamente")
+
+finally:
+
+    print("Proceso de clientes finalizado")
+
+
+try:
+
+    servicio1 = ReservaSala("Sala VIP", 50000)
+
+    reserva1 = Reserva(cliente1, servicio1, 3)
+
+    reserva1.confirmar()
+
+    reservas.append(reserva1)
+
+    reserva1.mostrar_reserva()
+
+except Exception as e:
+
+    logging.error(e)
+    print(f"Ocurrió un error: {e}")
+
+finally:
+
+    print("Sistema ejecutado correctamente")
